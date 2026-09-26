@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WebXR 多视图渲染演示</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <canvas id="gl"></canvas>
+
+  <div id="banner" class="banner" hidden></div>
+
+  <div id="hud" class="hud">
+    <div class="hud-title">性能面板</div>
+    <div class="hud-row"><span>帧耗时</span><b id="stat-frame">-- ms</b></div>
+    <div class="hud-row"><span>平均 / P95</span><b id="stat-avg">-- / -- ms</b></div>
+    <div class="hud-row"><span>帧率</span><b id="stat-fps">-- fps</b></div>
+    <div class="hud-row"><span>显存(纹理+缓冲)</span><b id="stat-mem">-- MB</b></div>
+    <div class="hud-row"><span>显存预算</span><b id="stat-budget">-- MB</b></div>
+    <div class="hud-row"><span>JS 堆</span><b id="stat-heap">-- MB</b></div>
+    <div class="hud-row"><span>渲染路径</span><b id="stat-path">--</b></div>
+    <div class="hud-row"><span>视图数</span><b id="stat-views">1</b></div>
+  </div>
+
+  <div id="panel" class="panel">
+    <div class="group">
+      <div class="group-title">视图模式</div>
+      <div class="btn-row" id="view-buttons">
+        <button data-views="1" class="active">单眼</button>
+        <button data-views="2">双眼</button>
+        <button data-views="4">四视图</button>
+      </div>
+    </div>
+    <div class="group">
+      <div class="group-title">图层</div>
+      <label><input type="checkbox" id="layer-texture" checked> 纹理图层</label>
+      <label><input type="checkbox" id="layer-projection" checked> 投影图层</label>
+      <label><input type="checkbox" id="layer-cylinder" checked> 圆柱图层</label>
+    </div>
+    <div class="group">
+      <div class="group-title">XR 会话</div>
+      <div class="btn-row">
+        <button id="btn-enter-xr">进入 XR</button>
+        <button id="btn-exit-xr" disabled>退出 XR</button>
+        <button id="btn-resume-xr" hidden>恢复会话</button>
+      </div>
+      <div class="hint" id="xr-status">未检测 WebXR 能力…</div>
+    </div>
+    <div class="group">
+      <div class="group-title">故障模拟（验收测试）</div>
+      <div class="btn-row">
+        <button id="btn-sim-oom">模拟显存不足</button>
+        <button id="btn-sim-ctxlost">模拟上下文丢失</button>
+        <button id="btn-sim-interrupt">模拟会话中断</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="log" class="log"></div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

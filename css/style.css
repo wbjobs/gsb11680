@@ -1,0 +1,43 @@
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; overflow: hidden; background: #0b0e14; color: #dde3ee;
+  font: 13px/1.5 "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; }
+
+#gl { position: fixed; inset: 0; width: 100%; height: 100%; display: block; }
+
+.hud { position: fixed; top: 12px; left: 12px; min-width: 230px; padding: 10px 12px;
+  background: rgba(10, 14, 22, .78); border: 1px solid #2a3550; border-radius: 8px;
+  backdrop-filter: blur(4px); z-index: 10; }
+.hud-title { font-weight: 600; margin-bottom: 6px; color: #8fb8ff; }
+.hud-row { display: flex; justify-content: space-between; gap: 12px; }
+.hud-row span { color: #93a0b8; }
+.hud-row b { font-variant-numeric: tabular-nums; font-weight: 600; }
+
+.panel { position: fixed; top: 12px; right: 12px; width: 250px; padding: 10px 12px;
+  background: rgba(10, 14, 22, .78); border: 1px solid #2a3550; border-radius: 8px;
+  backdrop-filter: blur(4px); z-index: 10; }
+.group { margin-bottom: 12px; }
+.group:last-child { margin-bottom: 0; }
+.group-title { font-weight: 600; color: #8fb8ff; margin-bottom: 6px; }
+.group label { display: block; margin: 2px 0; cursor: pointer; }
+.btn-row { display: flex; flex-wrap: wrap; gap: 6px; }
+button { background: #1c2740; color: #dde3ee; border: 1px solid #35446b; border-radius: 6px;
+  padding: 5px 10px; cursor: pointer; font-size: 12px; }
+button:hover { background: #263357; }
+button:disabled { opacity: .4; cursor: default; }
+button.active { background: #2f6fed; border-color: #2f6fed; color: #fff; }
+.hint { margin-top: 6px; color: #93a0b8; font-size: 12px; }
+
+.banner { position: fixed; top: 12px; left: 50%; transform: translateX(-50%);
+  max-width: 70vw; padding: 8px 16px; border-radius: 6px; z-index: 20;
+  background: #4a2f10; border: 1px solid #a56b1d; color: #ffd9a0; }
+.banner.error { background: #4a1010; border-color: #a51d1d; color: #ffb3b3; }
+.banner.ok { background: #104a22; border-color: #1da550; color: #b3ffcf; }
+
+.log { position: fixed; left: 12px; bottom: 12px; width: 460px; max-width: 60vw; max-height: 180px;
+  overflow-y: auto; padding: 8px 10px; background: rgba(10, 14, 22, .78);
+  border: 1px solid #2a3550; border-radius: 8px; font-size: 12px; z-index: 10; }
+.log div { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.log .t { color: #5c6b8a; margin-right: 6px; }
+.log .warn { color: #ffd9a0; }
+.log .error { color: #ffb3b3; }
+.log .ok { color: #b3ffcf; }
