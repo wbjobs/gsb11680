@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WebXR 多视图渲染 Demo</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header>
+  <h1>WebXR 多视图渲染（单眼 / 双眼 / 四视图）</h1>
+</header>
+
+<main>
+  <section id="stage">
+    <canvas id="glcanvas"></canvas>
+    <div id="overlay-status"></div>
+  </section>
+
+  <aside id="panel">
+    <fieldset>
+      <legend>视图模式</legend>
+      <label><input type="radio" name="viewmode" value="1" checked> 单眼（1 视图）</label>
+      <label><input type="radio" name="viewmode" value="2"> 双眼（2 视图）</label>
+      <label><input type="radio" name="viewmode" value="4"> 四视图</label>
+    </fieldset>
+
+    <fieldset>
+      <legend>图层</legend>
+      <label><input type="checkbox" id="layer-projection" checked> 投影图层（全屏渐变）</label>
+      <label><input type="checkbox" id="layer-texture" checked> 纹理图层（旋转立方体）</label>
+      <label><input type="checkbox" id="layer-cylinder" checked> 圆柱图层（全景）</label>
+    </fieldset>
+
+    <fieldset>
+      <legend>XR 会话</legend>
+      <button id="btn-enter-xr">进入沉浸式 VR</button>
+      <button id="btn-exit-xr" disabled>退出会话</button>
+      <button id="btn-resume-xr" disabled>恢复会话</button>
+      <div id="xr-support">检测中…</div>
+    </fieldset>
+
+    <fieldset>
+      <legend>故障注入（验收用）</legend>
+      <button id="fault-texture">模拟纹理格式不支持</button>
+      <button id="fault-vram">模拟显存不足</button>
+      <button id="fault-mismatch">模拟视图数量不匹配</button>
+      <button id="fault-interrupt">模拟会话中断</button>
+      <button id="fault-nolayers">模拟浏览器不支持 layers</button>
+      <button id="fault-clear">清除故障</button>
+    </fieldset>
+
+    <fieldset>
+      <legend>性能 / 显存</legend>
+      <table id="stats">
+        <tr><td>渲染后端</td><td id="stat-backend">-</td></tr>
+        <tr><td>实际视图数</td><td id="stat-views">-</td></tr>
+        <tr><td>CPU 帧耗时</td><td id="stat-cpu">-</td></tr>
+        <tr><td>GPU 帧耗时</td><td id="stat-gpu">-</td></tr>
+        <tr><td>FPS</td><td id="stat-fps">-</td></tr>
+        <tr><td>纹理显存占用</td><td id="stat-vram">-</td></tr>
+        <tr><td>显存预算</td><td id="stat-vram-budget">-</td></tr>
+        <tr><td>JS 堆内存</td><td id="stat-heap">-</td></tr>
+        <tr><td>降级状态</td><td id="stat-degraded">无</td></tr>
+      </table>
+    </fieldset>
+
+    <fieldset>
+      <legend>事件日志</legend>
+      <div id="log"></div>
+    </fieldset>
+  </aside>
+</main>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
